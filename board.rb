@@ -12,6 +12,16 @@ class Board
     end
   end
 
+  def set_mark(symbol, coord)
+    x = coord[0]
+    y = coord[1]
+    if board[x][y] == ' '
+      board[x][y] = symbol
+    else
+      puts 'Illegal move!'
+    end
+  end
+
   private
 
   attr_reader :board
