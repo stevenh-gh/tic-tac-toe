@@ -26,6 +26,3 @@ class Board
 
   attr_reader :board
 end
-
-b = Board.new
-b.print_board
