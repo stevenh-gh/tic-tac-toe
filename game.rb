@@ -33,17 +33,22 @@ class Game
   attr_accessor :is_game_over
 
   def convert_input(string_coord)
-    string_coord.split('').map { |ele| ele.to_i } if string_coord.length == 2
+    string_coord.split('').map { |ele| ele.to_i }
   end
 
   def query_player(team)
+    is_legal_move = false
     case team
     when 'x'
-      print 'Player X enter coordinates: '
-      player_x.add_mark(convert_input(gets.chomp))
+      until is_legal_move
+        print 'Player X enter coordinates: '
+        is_legal_move = player_x.add_mark(convert_input(gets.chomp))
+      end
     when 'o'
-      print 'Player O enter coordinates: '
-      player_o.add_mark(convert_input(gets.chomp))
+      until is_legal_move
+        print 'Player O enter coordinates: '
+        is_legal_move = player_o.add_mark(convert_input(gets.chomp))
+      end
     end
   end
 end
