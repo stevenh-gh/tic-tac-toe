@@ -19,18 +19,21 @@ class Game
   def game_start
     puts 'Enter coordinates like so: 12 (if you want the coordinates 1,2)'
     until is_game_over
-      query_player('x')
-      board.print_board
-      query_player('o')
-      board.print_board
-
-      is_game_over = true
+      play_game
+      self.is_game_over = true
     end
   end
 
   private
 
   attr_accessor :is_game_over
+
+  def play_game
+    query_player('x')
+    board.print_board
+    query_player('o')
+    board.print_board
+  end
 
   def convert_input(string_coord)
     string_coord.split('').map { |ele| ele.to_i }
