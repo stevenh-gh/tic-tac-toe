@@ -18,7 +18,7 @@ class Game
 
   def game_start
     puts 'Enter coordinates like so: 12 (if you want the coordinates 1,2)'
-    until is_game_over
+    until self.is_game_over
       play_game
       self.is_game_over = true
     end
