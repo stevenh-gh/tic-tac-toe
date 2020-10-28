@@ -15,7 +15,7 @@ class Board
   def set_mark(symbol, coord)
     if (coord.length != 2) ||
        (coord[0] < 0 || coord[0] > 2) ||
-       (coord[1] < 1 || coord[1] > 2)
+       (coord[1] < 0 || coord[1] > 2)
       return error
     end
 
