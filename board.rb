@@ -29,6 +29,8 @@ class Board
     end
   end
 
+  def check_board(coord); end
+
   private
 
   attr_reader :board
