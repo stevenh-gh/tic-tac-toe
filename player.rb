@@ -1,7 +1,7 @@
 require_relative 'board'
 
 class Player
-  attr_reader :name
+  attr_reader :name, :symbol
   def initialize(name, symbol, board)
     @name = name
     @symbol = symbol
@@ -14,5 +14,5 @@ class Player
 
   private
 
-  attr_reader :symbol, :board
+  attr_reader :board
 end
