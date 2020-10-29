@@ -69,6 +69,3 @@ class Game
     end
   end
 end
-
-g = Game.new
-g.game_start
