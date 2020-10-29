@@ -2,6 +2,7 @@ require_relative 'check_list'
 
 class Board
   include CheckList
+
   def initialize
     @board = Array.new(3) { Array.new(3, ' ') }
   end
@@ -35,7 +36,6 @@ class Board
   def check_board(coord)
     CHECK_WIN_LIST[coord].any? do |coordinate_group|
       coordinate_group.all? do |coordinate|
-        p coordinate
         board[coord[0]][coord[1]] == board[coordinate[0]][coordinate[1]]
       end
     end
