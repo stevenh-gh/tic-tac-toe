@@ -14,6 +14,7 @@ class Game
     @player_o = Player.new(gets.chomp, 'O', board)
 
     @is_game_over = false
+    @winner = nil
   end
 
   def game_start
@@ -22,14 +23,24 @@ class Game
     until is_game_over
       team = count.even? ? 'x' : 'o'
       play_game(team)
-      self.is_game_over = true if board.check_board(current_input)
+      if board.check_board(current_input)
+        self.winner = [player_x, player_o].find { |player| player.symbol == team.upcase }
+        self.is_game_over = true
+      end
       count += 1
+
     end
+
+    declare_winner
   end
 
   private
 
-  attr_accessor :is_game_over, :current_input
+  attr_accessor :is_game_over, :current_input, :winner
+
+  def declare_winner
+    puts "#{winner.name} is the winner!"
+  end
 
   def play_game(team)
     query_player(team)
@@ -56,7 +67,6 @@ class Game
         is_legal_move = player_o.add_mark(current_input)
       end
     end
-    input
   end
 end
 
