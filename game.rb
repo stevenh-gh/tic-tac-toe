@@ -26,12 +26,12 @@ class Game
       if board.check_board(current_input)
         self.winner = [player_x, player_o].find { |player| player.symbol == team.upcase }
         self.is_game_over = true
+        declare_winner
       end
       count += 1
-
+      self.is_game_over = true if count == 9
     end
-
-    declare_winner
+    puts 'This match is a tie!'
   end
 
   private
