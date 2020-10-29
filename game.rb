@@ -18,20 +18,21 @@ class Game
 
   def game_start
     puts 'Enter coordinates like so: 12 (if you want the coordinates 1,2)'
-    until self.is_game_over
-      play_game
-      self.is_game_over = true
+    count = 0
+    until is_game_over
+      team = count.even? ? 'x' : 'o'
+      play_game(team)
+      self.is_game_over = true if board.check_board(current_input)
+      count += 1
     end
   end
 
   private
 
-  attr_accessor :is_game_over
+  attr_accessor :is_game_over, :current_input
 
-  def play_game
-    query_player('x')
-    board.print_board
-    query_player('o')
+  def play_game(team)
+    query_player(team)
     board.print_board
   end
 
@@ -45,14 +46,17 @@ class Game
     when 'x'
       until is_legal_move
         print 'Player X enter coordinates: '
-        is_legal_move = player_x.add_mark(convert_input(gets.chomp))
+        @current_input = convert_input(gets.chomp)
+        is_legal_move = player_x.add_mark(current_input)
       end
     when 'o'
       until is_legal_move
         print 'Player O enter coordinates: '
-        is_legal_move = player_o.add_mark(convert_input(gets.chomp))
+        @current_input = convert_input(gets.chomp)
+        is_legal_move = player_o.add_mark(current_input)
       end
     end
+    input
   end
 end
 
